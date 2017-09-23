@@ -1,0 +1,6 @@
+version: '2'
+services:
+  hapi1:
+    command: node_modules/.bin/nodemon -L --watch src index.js
+    logging:
+      driver: json-file

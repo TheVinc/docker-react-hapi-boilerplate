@@ -1,0 +1,28 @@
+version: '2'
+services:
+  hapi1:
+    build: ./hapi1
+    command: node_modules/.bin/nodemon -L --watch src index.js
+    volumes:
+      - ./hapi1:/mnt
+    logging:
+      driver: json-file
+
+  react1:
+    build: ./react1
+    volumes:
+      - ./react1/dist:/usr/share/nginx/html
+    logging:
+      driver: none
+
+  gateway:
+    build: ./gateway
+    ports:
+     - "80:80"
+     - "443:443"
+    depends_on:
+     - react1
+    environment:
+     - DOMAIN=localhost
+    logging:
+      driver: none
