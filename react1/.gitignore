@@ -1,8 +1,9 @@
 # Text editor files
 **/.DS_Store
 
-# Npm node files
+# Npm files
 node_modules
 npm-debug.log*
+package-lock.json
 
 # Codes files
